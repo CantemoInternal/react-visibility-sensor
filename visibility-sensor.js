@@ -56,10 +56,11 @@ module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    if (nextProps.active) {
+    if (nextProps.active && !this.props.active) {
       this.setState(this.getInitialState());
       this.startWatching();
-    } else {
+    }
+    if (!nextProps.active && this.props.active) {
       this.stopWatching();
     }
   },
