@@ -2,28 +2,30 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
 
-var containmentPropType = React.PropTypes.any;
+var containmentPropType = PropTypes.any;
 
 if (typeof window !== 'undefined') {
-  containmentPropType = React.PropTypes.instanceOf(Element);
+  containmentPropType = PropTypes.instanceOf(Element);
 }
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   displayName: 'VisibilitySensor',
 
   propTypes: {
-    onChange: React.PropTypes.func.isRequired,
-    active: React.PropTypes.bool,
-    partialVisibility: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    onChange: PropTypes.func.isRequired,
+    active: PropTypes.bool,
+    partialVisibility: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
     ]),
-    delay: React.PropTypes.number,
-    delayedCall: React.PropTypes.bool,
+    delay: PropTypes.number,
+    delayedCall: PropTypes.bool,
     containment: containmentPropType,
-    children: React.PropTypes.element,
-    minTopValue: React.PropTypes.number
+    children: PropTypes.element,
+    minTopValue: PropTypes.number
   },
 
   getDefaultProps: function () {
